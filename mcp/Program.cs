@@ -11,7 +11,7 @@ builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services
     .AddMcpServer()
     .WithStdioServerTransport()
-    .WithTools<RandomNumberTools>()
-    .WithTools<RaspOmgtuTools>();
+    .WithTools<OmgtuScheduleTools>()
+    .WithTools<DateTimeTools>();
 
 await builder.Build().RunAsync();

@@ -1,2 +1,58 @@
-/bin
-/obj
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# MonoDevelop
+*.pidb
+*.pdb
+*.log
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# IDEs
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backup files
+*~
+*.orig
+*.bak
