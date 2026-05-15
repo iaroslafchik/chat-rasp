@@ -36,7 +36,7 @@ GET {{host}}{{scheduleEndpointGroup}}565?start=2026.03.02&finish=2026.02.02&lng=
 ### в формате ics
 ### комментарий по задержкам: не видел, чтобы официальному серверу требовалось БОЛЬШЕ 500 мс для ответа
 ### комментарий по содержимому: 2-3к строк, гораздо меньше чем в json варианте, весит 100 КБ
-GET {{host}}{{scheduleEndpointGroup}}565.ics?start=2026.02.02&finish=2026.07.30&lng=1 HTTP/1.1
+GET {{host}}{{scheduleEndpointGroup}}565.ics?start=2026.05.11&finish=2026.05.11&lng=1 HTTP/1.1
 
 
 ### ПРЕПОДЫ
