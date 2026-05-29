@@ -3,6 +3,7 @@ package ru.neomgtu.proxyrasp.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,5 +38,23 @@ public class ScheduleController {
             @RequestParam int lng) {
         return scheduleService.getScheduleByPersonId(personId, start, finish, lng);
     };
+
+    @PostMapping(value = "/group/{groupId}/save", produces = "application/json")
+    public Mono<Void> saveGroupSchedule(
+            @PathVariable String groupId,
+            @RequestParam String start,
+            @RequestParam String finish,
+            @RequestParam int lng) {
+        return scheduleService.fetchAndSaveScheduleByGroupId(groupId, start, finish, lng);
+    }
+
+    @PostMapping(value = "/person/{personId}/save", produces = "application/json")
+    public Mono<Void> savePersonSchedule(
+            @PathVariable String personId,
+            @RequestParam String start,
+            @RequestParam String finish,
+            @RequestParam int lng) {
+        return scheduleService.fetchAndSaveScheduleByPersonId(personId, start, finish, lng);
+    }
 
 }
