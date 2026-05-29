@@ -42,9 +42,14 @@ public class ScheduleService {
                     return false;
                 }
                 List<Subject> entities = subjectDtos.stream()
-                        .map(this::toEntity)
-                        .collect(Collectors.toList());
-                subjectRepository.saveAll(entities);
+                    .map(this::toEntity)
+                    .collect(Collectors.toList());
+                List<Subject> toSave = entities.stream()
+                    .filter(s -> !subjectRepository.existsByAuditoriumAndDateAndBeginLesson(s.getAuditorium(), s.getDate(), s.getBeginLesson()))
+                    .collect(Collectors.toList());
+                if (!toSave.isEmpty()) {
+                    subjectRepository.saveAll(toSave);
+                }
                 return true;
             }).subscribeOn(Schedulers.boundedElastic()))
             .then();
@@ -60,9 +65,14 @@ public class ScheduleService {
                     return false;
                 }
                 List<Subject> entities = subjectDtos.stream()
-                        .map(this::toEntity)
-                        .collect(Collectors.toList());
-                subjectRepository.saveAll(entities);
+                    .map(this::toEntity)
+                    .collect(Collectors.toList());
+                List<Subject> toSave = entities.stream()
+                    .filter(s -> !subjectRepository.existsByAuditoriumAndDateAndBeginLesson(s.getAuditorium(), s.getDate(), s.getBeginLesson()))
+                    .collect(Collectors.toList());
+                if (!toSave.isEmpty()) {
+                    subjectRepository.saveAll(toSave);
+                }
                 return true;
             }).subscribeOn(Schedulers.boundedElastic()))
             .then();

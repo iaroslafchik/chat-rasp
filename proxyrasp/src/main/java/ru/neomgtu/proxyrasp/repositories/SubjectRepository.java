@@ -8,4 +8,6 @@ import ru.neomgtu.proxyrasp.entity.Subject;
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
+	boolean existsByAuditoriumAndDateAndBeginLesson(String auditorium, String date, String beginLesson);
+
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "subjects")
+@Table(name = "subjects", uniqueConstraints = @UniqueConstraint(columnNames = {"auditorium", "date", "begin_lesson"}))
 public class Subject {
 
     @Id
@@ -22,6 +23,8 @@ public class Subject {
     private Long id;
 
     private String auditorium;
+
+    @Column(name = "begin_lesson")
     private String beginLesson;
     private String building;
     private String createddate;
