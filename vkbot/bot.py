@@ -357,8 +357,8 @@ def handle_custom_date(user_id, text):
 
         def parse_dmY(s):
             d, m, y = s.split()
-        if len(y) == 2:
-            y = "20" + y
+            if len(y) == 2:
+                y = "20" + y
             return datetime(int(y), int(m), int(d))
 
         if len(parts) == 1:
