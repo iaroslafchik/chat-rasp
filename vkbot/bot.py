@@ -386,8 +386,8 @@ def handle_custom_date(user_id, text):
         else:
             raise ValueError("invalid format")
 
-    except Exception:
-        send(user_id, "❌ Ошибка даты, попробуй ещё раз")
+    except Exception as e:
+        send(user_id, f"❌ Ошибка даты, попробуй ещё раз, {e}")
 
 
 
