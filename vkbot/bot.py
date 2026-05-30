@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import re
 
 # 🔑 ВСТАВЬ СВОЙ ТОКЕН ГРУППЫ VK
-# TOKEN = "TOKEN"
+TOKEN = "vk1.a.mPvqi5NIfdKUfFKt97rjd3bpw_DGDVBjRzKalSEgUDaaVlU7hqp68wtQQAr_4m1a0crfxFKLjBVxELACEPJWWIrLOVJE9yCo9w5WNEuw28RUaTIk8IkZc4funhvwg49ovMzMPGyrCroFZyUX3L0KX7VEfmrvrQBZJGuIZyMpQ3QlMzbQ4pAzp8wqniE99Jio0a4UO_cfO8WmBrGtN5kizg"
 
 # Основной адрес API ОмГТУ
 API_BASE_URL = "http://144.31.78.248:8080"
