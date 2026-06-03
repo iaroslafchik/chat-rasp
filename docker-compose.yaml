@@ -1,0 +1,33 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    container_name: vllm-server
+    ports:
+      - "8000:8000"
+    volumes:
+      - "D:\\models:/models"
+    command: >
+      --model /models/lmstudio-community/gemma-4-E2B-it-GGUF/gemma-4-E2B-it-Q4_K_M.gguf
+      --tokenizer google/gemma-4-it
+      --mmproj /models/lmstudio-community/gemma-4-E2B-it-GGUF/mmproj-gemma-4-E2B-it-BF16.gguf
+      --chat-template /models/lmstudio-community/gemma-4-E2B-it-GGUF/chat_template.jinja
+      --tool-call-parser gemma4
+      --enable-auto-tool-choice
+      --tool-server http://omgtu-schedule-tools-server:8080
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      mcp:
+        condition: service_started
+
+  mcp:
+    build: ./mcp
+    container_name: omgtu-schedule-tools-server
+    ports:
+      - "8080:8080"
