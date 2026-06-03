@@ -127,7 +127,7 @@ internal class OmgtuScheduleTools
         - определения id перед вызовом расписания
         """)]
     public async Task<string> Search(
-            [Description("поисковая строка")] string term,
+            [Description("поисковый запрос")] string term,
             [Description("тип объекта: person, auditorium, student, group")] string type)
     {
         var url =

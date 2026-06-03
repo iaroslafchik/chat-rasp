@@ -1,17 +1,18 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-var builder = Host.CreateApplicationBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Configure all logs to go to stderr (stdout is used for the MCP protocol messages).
 builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 
-// Add the MCP services: the transport to use (stdio) and the tools to register.
+// Add the MCP services: use HTTP transport instead of stdio.
 builder.Services
     .AddMcpServer()
-    .WithStdioServerTransport()
+    .WithHttpTransport()          // ← Replaces .WithStdioServerTransport()
     .WithTools<OmgtuScheduleTools>()
     .WithTools<DateTimeTools>();
 
-await builder.Build().RunAsync();
+var app = builder.Build();
+
+// Mount the MCP server to an HTTP endpoint (e.g., /mcp)
+app.MapMcp("/mcp");               // Clients will connect to http://.../mcp
+
+await app.RunAsync();
