@@ -4,8 +4,8 @@
 
 Грубый список частей проекта и соответсвующих им ЯП
 
-* tgbot Python
-* llm C++
+* vkbot Python
+* llm vllm
 * mcp C#
 * proxyrasp Java
 * cachedb Postgres
