@@ -3,18 +3,18 @@ using System.Globalization;
 using ModelContextProtocol.Server;
 
 [McpServerToolType]
-internal class DateTimeTools
+public static class DateTimeTools
 {
     [McpServerTool]
     [Description("Получить текущую дату и время сервера в ISO 8601")]
-    public string GetNowIso()
+    public static string GetNowIso()
     {
         return DateTimeOffset.Now.ToString("O");
     }
 
     [McpServerTool]
     [Description("Получить текущую дату")]
-    public string GetCurrentDate()
+    public static string GetCurrentDate()
     {
         return DateOnly.FromDateTime(DateTime.Now)
             .ToString("yyyy.MM.dd");
@@ -22,7 +22,7 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Получить текущее время")]
-    public string GetCurrentTime()
+    public static string GetCurrentTime()
     {
         return TimeOnly.FromDateTime(DateTime.Now)
             .ToString("HH:mm:ss");
@@ -30,21 +30,21 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Получить текущий timestamp Unix")]
-    public long GetUnixTimestamp()
+    public static long GetUnixTimestamp()
     {
         return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 
     [McpServerTool]
     [Description("Получить текущую дату и время UTC")]
-    public string GetUtcNow()
+    public static string GetUtcNow()
     {
         return DateTimeOffset.UtcNow.ToString("O");
     }
 
     [McpServerTool]
     [Description("Получить дату через указанное количество дней от текущей")]
-    public string GetDateAfterDays(
+    public static string GetDateAfterDays(
         [Description("количество дней")] int days)
     {
         return DateTime.Now
@@ -54,7 +54,7 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Получить дату до указанного количества дней от текущей")]
-    public string GetDateBeforeDays(
+    public static string GetDateBeforeDays(
         [Description("количество дней")] int days)
     {
         return DateTime.Now
@@ -64,7 +64,7 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Преобразовать дату в формат API ОмГТУ YYYY.MM.DD")]
-    public string FormatDateForOmgtuApi(
+    public static string FormatDateForOmgtuApi(
         [Description("дата в любом поддерживаемом формате")] string input)
     {
         var date = DateTime.Parse(
@@ -77,7 +77,7 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Получить диапазон дат от сегодня + N дней")]
-    public object GetDateRange(
+    public static object GetDateRange(
         [Description("смещение начала диапазона в днях")] int startOffsetDays,
         [Description("смещение конца диапазона в днях")] int finishOffsetDays)
     {
@@ -97,14 +97,14 @@ internal class DateTimeTools
 
     [McpServerTool]
     [Description("Получить текущий день недели")]
-    public string GetDayOfWeek()
+    public static string GetDayOfWeek()
     {
         return DateTime.Now.DayOfWeek.ToString();
     }
 
     [McpServerTool]
     [Description("Проверить високосный ли год")]
-    public bool IsLeapYear(
+    public static bool IsLeapYear(
         [Description("год")] int year)
     {
         return DateTime.IsLeapYear(year);

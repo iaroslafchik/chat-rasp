@@ -13,6 +13,7 @@ RUN dotnet publish -c Release \
 
 # Финальный образ — используем минимальный базовый образ Alpine без .NET
 FROM alpine:3.22
+FROM mcr.microsoft.com/dotnet/runtime-deps:10.0-alpine
 WORKDIR /app
 # Копируем только скомпилированный бинарник
 COPY --from=build /app/publish/mcp .

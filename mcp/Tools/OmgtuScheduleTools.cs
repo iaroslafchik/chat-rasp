@@ -4,7 +4,7 @@ using System.Text.Json;
 using ModelContextProtocol.Server;
 
 [McpServerToolType]
-internal class OmgtuScheduleTools
+public static class OmgtuScheduleTools
 {
     private static readonly HttpClient _httpClient = new()
     {
@@ -126,7 +126,7 @@ internal class OmgtuScheduleTools
         - поиска аудитории
         - определения id перед вызовом расписания
         """)]
-    public async Task<string> Search(
+    public static async Task<string> Search(
             [Description("поисковый запрос")] string term,
             [Description("тип объекта: person, auditorium, student, group")] string type)
     {
@@ -172,7 +172,7 @@ internal class OmgtuScheduleTools
         - определения времени и аудитории занятий
         - анализа изменений расписания
         """)]
-    public async Task<string> GetGroupSchedule(
+    public static async Task<string> GetGroupSchedule(
         [Description("идентификатор группы")] int id,
         [Description("начальная дата. Формат YYYY.MM.DD")] string start,
         [Description("конечная дата. Формат YYYY.MM.DD")] string finish,
@@ -214,7 +214,7 @@ internal class OmgtuScheduleTools
         - максимальный период запроса: 180 дней
         - формат даты: YYYY.MM.DD
         """)]
-    public async Task<string> GetPersonSchedule(
+    public static async Task<string> GetPersonSchedule(
         [Description("идентификатор преподавателя")] int id,
         [Description("начальная дата. Формат YYYY.MM.DD")] string start,
         [Description("конечная дата. Формат YYYY.MM.DD")] string finish,
@@ -260,7 +260,7 @@ internal class OmgtuScheduleTools
         - максимальный период запроса: 180 дней
         - формат даты: YYYY.MM.DD
         """)]
-    public async Task<string> GetAuditoriumSchedule(
+    public static async Task<string> GetAuditoriumSchedule(
         [Description("идентификатор аудитории")] int id,
         [Description("начальная дата. Формат YYYY.MM.DD")] string start,
         [Description("конечная дата. Формат YYYY.MM.DD")] string finish,
@@ -294,7 +294,7 @@ internal class OmgtuScheduleTools
         - максимальный период: 180 дней
         - язык: lng=1 для русского
         """)]
-    public async Task<string> GetGroupScheduleIcs(
+    public static async Task<string> GetGroupScheduleIcs(
         [Description("идентификатор группы")] int id,
         [Description("начальная дата. Формат YYYY.MM.DD")] string start,
         [Description("конечная дата. Формат YYYY.MM.DD")] string finish,

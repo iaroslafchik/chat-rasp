@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
@@ -7,11 +10,13 @@ import requests
 from datetime import datetime, timedelta
 import re
 
+load_dotenv()  # Load .env file
+
 # 🔑 ВСТАВЬ СВОЙ ТОКЕН ГРУППЫ VK
-TOKEN = "vk1.a.mPvqi5NIfdKUfFKt97rjd3bpw_DGDVBjRzKalSEgUDaaVlU7hqp68wtQQAr_4m1a0crfxFKLjBVxELACEPJWWIrLOVJE9yCo9w5WNEuw28RUaTIk8IkZc4funhvwg49ovMzMPGyrCroFZyUX3L0KX7VEfmrvrQBZJGuIZyMpQ3QlMzbQ4pAzp8wqniE99Jio0a4UO_cfO8WmBrGtN5kizg"
+TOKEN = os.getenv('VK_API_TOKEN')
 
 # Основной адрес API ОмГТУ
-API_BASE_URL = "http://144.31.78.248:8080"
+API_BASE_URL = os.getenv('API_BASE_URL')
 
 vk_session = vk_api.VkApi(token=TOKEN)
 vk = vk_session.get_api()

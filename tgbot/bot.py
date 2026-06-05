@@ -1,11 +1,16 @@
+import os
+from dotenv import load_dotenv
+
 import telebot
 from telebot import types
 import requests
 from datetime import datetime, timedelta
 import random
 
+load_dotenv()  # Load .env file
+
 # Замени на свой токен
-bot = telebot.TeleBot('8497984818:AAFDMye_n9f-6x01gwGwRnf1TyjQhgKjGrk')
+bot = telebot.TeleBot(os.getenv('TG_API_TOKEN'))
 
 user_data = {}
 
