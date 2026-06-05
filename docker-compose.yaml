@@ -33,7 +33,6 @@ services:
 
   vkbot:
     build: ./vkbot
-    image: vkbot:latest
     environment:
       VK_API_TOKEN: ${VK_API_TOKEN}
       API_BASE_URL: http://proxyrasp:8080
